@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom"; 
 
 const DoNothing = () => {
+  const navigate = useNavigate();
   const [timer, setTimer] = useState(120); // 2 मिनट का टाइमर
   const [isActive, setIsActive] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -85,7 +87,7 @@ const DoNothing = () => {
               अब आप शांत हैं। अब आप सही फैसले लेने के लिए तैयार हैं।
             </p>
             <button 
-              onClick={() => window.history.back()}
+             onClick={() => navigate("/home")}
               className="bg-[#333] text-white px-10 py-4 rounded-full font-bold uppercase text-[10px] tracking-widest shadow-xl"
             >
               Go Back to Reality
