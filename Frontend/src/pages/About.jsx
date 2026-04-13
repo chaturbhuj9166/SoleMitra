@@ -1,14 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
-// 🖼️ अपनी इमेज का सही पाथ यहाँ चेक कर लेना
+// 🖼️ इमेज पाथ पक्का कर लेना भाई
 import relationshipImg2 from "../images/relationshipimg2.png";
 
 const About = () => {
   const navigate = useNavigate();
 
-  // सर्विसेज का डेटा - यहाँ तू और भी बढ़ा सकता है
+  // 📋 सर्विसेज डेटा
   const services = [
     { title: "Relationship Coach", value: "relationship-coach", desc: "Expert guidance for your personal connections." },
     { title: "Art of Attraction", value: "attraction-art", desc: "Learn how to attract the right person with confidence." },
@@ -18,9 +17,20 @@ const About = () => {
     { title: "Breakup Help", value: "breakup", desc: "Move on with clarity and emotional strength." }
   ];
 
+  // 🗺️ Navigation Mapping (As per your App.js screenshot)
+  const serviceRoutes = {
+    "relationship-coach": "/relationship-coach",
+    "attraction-art": "/master-the-art-of-attraction",
+    "loyalty-test": "/take-a-loyalty-test",
+    "patchup": "/patchup-services",
+    "detective": "/hire-a-personal-detective",
+    "breakup": "/breakup-services"
+  };
+
   const handleServiceClick = (serviceValue) => {
-    // Navigate करते समय 'state' भेज रहे हैं ताकि Contact पेज उसे पढ़ सके
-    navigate("/contact", { state: { selectedService: serviceValue } });
+    // अब यह सीधे सर्विस पेज पर जाएगा
+    const targetPath = serviceRoutes[serviceValue] || "/services";
+    navigate(targetPath);
   };
 
   return (
@@ -71,11 +81,11 @@ const About = () => {
         </div>
       </div>
 
-      {/* 🔥 SERVICES GRID (The Part You Asked For) */}
+      {/* 🔥 SERVICES GRID */}
       <div className="relative z-10 max-w-6xl mx-auto mb-20">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-[#333]">Our Services</h2>
-          <p className="text-[#FF4D6D] font-bold uppercase tracking-widest text-sm mt-2">Click any service to book now</p>
+          <p className="text-[#FF4D6D] font-bold uppercase tracking-widest text-sm mt-2">Discover how we can help you</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -91,9 +101,13 @@ const About = () => {
               <p className="text-gray-500 mt-3 group-hover:text-white/90 transition duration-500 text-sm font-medium">
                 {service.desc}
               </p>
-              <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs font-bold flex items-center">
-                BOOK NOW 
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              
+              {/* 📖 READ MORE BUTTON (Updated) */}
+              <div className="mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 text-white text-[10px] font-black flex items-center tracking-[0.2em]">
+                READ MORE 
+                <svg className="w-5 h-5 ml-2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </div>
             </div>
           ))}

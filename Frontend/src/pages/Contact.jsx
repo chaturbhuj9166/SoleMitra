@@ -1,16 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom"; // 👈 location को पढ़ने के लिए
+import React, { useState, useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // 👈 Navigate के लिए
 
 const Contact = () => {
-  const location = useLocation(); // 👈 navigate से भेजा गया डेटा यहाँ मिलेगा
+  const location = useLocation();
+  const navigate = useNavigate(); // 👈 Navigation Initialize किया
+  
   const [selectedService, setSelectedService] = useState("");
 
-  // 🔥 यह Effect चेक करेगा कि क्या पीछे (About Page) से कोई सर्विस भेजी गई है
+  // 🔥 Refs ताकि इनपुट से डेटा उठा सकें (बिना कुछ हटाए)
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
+  const otherRef = useRef();
+
   useEffect(() => {
     if (location.state && location.state.selectedService) {
       setSelectedService(location.state.selectedService);
     }
   }, [location.state]);
+
+  // 🔥 यह फंक्शन डेटा के साथ अगले पेज पर ले जाएगा
+  const handleContinue = (e) => {
+    e.preventDefault();
+
+    const userData = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      // अगर 'Other' सिलेक्ट है तो specify वाला डेटा, नहीं तो सिलेक्टेड सर्विस
+      service: selectedService === "other" ? otherRef.current.value : selectedService,
+      message: messageRef.current.value,
+    };
+
+    // डेटा के साथ navigate कर रहे हैं
+    navigate("/book-now", { state: { userData } });
+  };
 
   return (
     <div className="relative pt-32 pb-20 px-6 md:px-12 bg-[#FFF0F3] text-gray-800 min-h-screen overflow-hidden">
@@ -61,22 +84,22 @@ const Contact = () => {
 
           {/* 📝 RIGHT SIDE: CLEAN APP-STYLE FORM */}
           <div className="bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(255,77,109,0.1)] border border-pink-50">
-            <form className="space-y-5">
+            <form onSubmit={handleContinue} className="space-y-5">
               <div className="space-y-1">
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Full Name</label>
-                <input type="text" placeholder="Your Name" className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700" />
+                <input ref={nameRef} required type="text" placeholder="Your Name" className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700" />
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Email Address</label>
-                <input type="email" placeholder="hello@example.com" className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700" />
+                <input ref={emailRef} required type="email" placeholder="hello@example.com" className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700" />
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Service Type</label>
                 <div className="relative">
                   <select 
-                    value={selectedService} // 👈 यह अब डायनामिक है
+                    value={selectedService}
                     onChange={(e) => setSelectedService(e.target.value)}
                     className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700 appearance-none cursor-pointer"
                   >
@@ -95,20 +118,20 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* 🔥 Dynamic Input: सिर्फ तभी दिखेगा जब 'other' सिलेक्ट हो */}
+              {/* 🔥 Dynamic Input: 'other' वाला पार्ट जैसा पहले था वैसा ही है */}
               {selectedService === "other" && (
                 <div className="space-y-1 animate-in fade-in zoom-in duration-300">
                   <label className="text-xs font-bold text-[#FF4D6D] uppercase tracking-widest ml-1">Please Specify</label>
-                  <input type="text" placeholder="Tell us more about your need..." className="w-full bg-rose-50 border-2 border-[#FF4D6D]/20 rounded-2xl px-6 py-4 outline-none focus:border-[#FF4D6D]" />
+                  <input ref={otherRef} type="text" placeholder="Tell us more about your need..." className="w-full bg-rose-50 border-2 border-[#FF4D6D]/20 rounded-2xl px-6 py-4 outline-none focus:border-[#FF4D6D]" />
                 </div>
               )}
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Message</label>
-                <textarea rows="3" placeholder="How can we help?" className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700 resize-none"></textarea>
+                <textarea ref={messageRef} rows="3" placeholder="How can we help?" className="w-full bg-[#FFF0F3]/30 border-2 border-transparent focus:border-[#FF4D6D]/20 focus:bg-white rounded-2xl px-6 py-4 focus:outline-none transition-all text-gray-700 resize-none"></textarea>
               </div>
 
-              <button className="w-full py-5 bg-[#FF4D6D] text-white font-bold rounded-2xl hover:bg-[#E63958] hover:shadow-xl hover:shadow-rose-200 transition-all duration-300 text-lg uppercase">
+              <button type="submit" className="w-full py-5 bg-[#FF4D6D] text-white font-bold rounded-2xl hover:bg-[#E63958] hover:shadow-xl hover:shadow-rose-200 transition-all duration-300 text-lg uppercase">
                 Continue
               </button>
             </form>

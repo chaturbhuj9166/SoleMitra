@@ -1,170 +1,185 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, ChevronRight, ArrowRight, Shield, Heart, Search, Target, Flame, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
-// Images
-import imgBreakup from "../images/ChatGPT Image Apr 9, 2026, 12_54_32 PM.png"; 
-import imgDetective from "../images/ChatGPT Image Apr 9, 2026, 01_11_06 PM.png";
-import imgRelRel from "../images/ChatGPT Image Apr 9, 2026, 12_32_47 PM.png";
-import imgAttr from "../images/ChatGPT Image Apr 9, 2026, 12_43_28 PM.png";
-import imgLoyal from "../images/ChatGPT Image Apr 9, 2026, 12_59_03 PM.png";
-import imgPatchup from "../images/ChatGPT Image Apr 9, 2026, 01_05_39 PM.png";
+// ✅ इमेज पाथ सुनिश्चित कर लेना भाई
+import imgRelRel from "../images/ChatGPT Image Apr 13, 2026, 11_44_50 AM.png";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const slides = [
-    { title: "Art of Attraction", img: imgAttr, link: "/master-the-art-of-attraction", icon: <Flame /> },
-    { title: "Relationship Coach", img: imgRelRel, link: "/relationship-coach", icon: <Heart /> },
-    { title: "Elite Loyalty Testing", img: imgLoyal, link: "/take-a-loyalty-test", icon: <Target /> },
-    { title: "Personal Detective", img: imgDetective, link: "/hire-a-personal-detective", icon: <Search /> },
-    { title: "Patchup Services", img: imgPatchup, link: "/patchup-services", icon: <Sparkles /> },
-    { title: "Breakup Services", img: imgBreakup, link: "/breakup-services", icon: <Shield /> }
+  // ✅ Slug बनाने के लिए फंक्शन (ताकि URL क्लीन रहे)
+  const createSlug = (text) => text.toLowerCase().trim().replace(/\s+/g, "-");
+
+  const services = [
+    {
+      title: "Relationship Coach",
+      desc: "एक्सपर्ट गाइडेंस के साथ अपने रिश्तों को बेहतर बनाएँ और आपसी समझ बढ़ाएँ।",
+      icon: "🤝",
+    },
+    {
+      title: "Loyalty Test",
+      desc: "क्या आपका पार्टनर वफादार है? हमारे प्रोफेशनल तरीके से सच जानें।",
+      icon: "🔍",
+    },
+    {
+      title: "Master the art of attraction",
+      desc: "सीखें वो साइकोलॉजी और स्किल्स जो आपको दूसरों के लिए अट्रैक्टिव बनाती हैं।",
+      icon: "✨",
+    },
+    {
+      title: "Patchup services",
+      desc: "टूटे हुए दिल जोड़ें। हम सुलह कराने और पुराने प्यार को वापस लाने में मदद करते हैं।",
+      icon: "❤️",
+    },
+    {
+      title: "Breakup Services",
+      desc: "अगर रिश्ता टॉक्सिक है, तो गरिमा के साथ आगे बढ़ने में हम आपकी मदद करेंगे।",
+      icon: "💔",
+    },
+    {
+      title: "Hire a Personal Detective",
+      desc: "पूरी गोपनियता के साथ बैकग्राउंड चेक और पर्सनल इन्वेस्टिगेशन।",
+      icon: "🕵️",
+    },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => nextSlide(), 5000);
-    return () => clearInterval(timer);
-  }, [currentSlide]);
-
-  const nextSlide = () =>
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-
-  const prevSlide = () =>
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-
   return (
-    <div className="bg-white min-h-screen font-sans">
+    <div className="bg-white font-sans">
+      
+      {/* 🚀 SECTION 1: HERO SECTION */}
+      <div className="relative min-h-screen overflow-hidden flex items-center">
+        
+        {/* 🔥 BACKGROUND ELEMENTS */}
+        <div className="absolute bottom-0 right-0 w-[10%] h-[60%] bg-gradient-to-b from-pink-400 to-pink-600"></div>
+        <div 
+          className="absolute right-0 top-0 w-[60%] h-full bg-white z-10" 
+          style={{ borderTopLeftRadius: "300px", borderBottomLeftRadius: "500px" }}
+        ></div>
+        <div 
+          className="absolute right-0 top-0 w-[60%] h-full z-0" 
+          style={{ 
+            borderTopLeftRadius: "320px", 
+            borderBottomLeftRadius: "520px", 
+            background: "linear-gradient(to bottom, #ff4d6d, #ff2e63)", 
+            transform: "translateX(10px)" 
+          }}
+        ></div>
 
-      {/* 🔥 HERO SLIDER */}
-      <section className="relative h-[85vh] md:h-[90vh] w-full overflow-hidden bg-black">
+        {/* 🖼️ HERO IMAGE */}
+        <div className="absolute w-[100%] flex justify-center z-20 pointer-events-none">
+          <img src={imgRelRel} alt="dating" className="w-[100%] object-contain" />
+        </div>
 
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-all duration-[1200ms bg-cover] ${
-              index === currentSlide
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-110 pointer-events-none"
-            }`}
-          >
-
-            {/* ✅ FIXED IMAGE */}
-            <img
-              src={slide.img}
-              alt={slide.title}
-              className="absolute inset-0 w-full h-full object-cover object-center scale-110 brightness-95 contrast-110"
-            />
-
-            {/* ✅ OVERLAY */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/70 z-10" />
-            <div className="absolute inset-0 bg-radial-gradient z-10 opacity-30" />
-
-            {/* CONTENT */}
-            <div className="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
-
-              <div className="flex items-center gap-3 mb-6 px-6 py-2 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-white text-xs font-bold uppercase tracking-[0.4em]">
-                <span className="text-yellow-400">{slide.icon}</span>
-                SoulMitra Elite
-              </div>
-
-              <h1 className="text-5xl md:text-[7rem] font-black text-white mb-8 tracking-tighter leading-none drop-shadow-lg">
-                {slide.title}
+        {/* ✨ CONTENT (Aligned with Logo) */}
+        <div className="relative z-30 w-full pt-40 lg:pt-40 px-8 md:px-16 lg:px-17">
+          <div className="max-w-2xl text-left">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-5xl md:text-7xl font-black text-[#333] leading-tight mb-6">
+                From <br /> 
+                <span className="text-[#FF4D6D]">Heartbreak</span> <br /> 
+                to <span className="italic font-serif">Healing.</span>
               </h1>
+              
+              <p className="text-gray-500 mb-10 text-base md:text-lg leading-relaxed max-w-md font-medium">
+                We help you fix relationships, understand emotions, and rebuild love. 
+                चाहे breakup हो, patchup या attraction — हम आपके साथ हैं।
+              </p>
 
-              <button
-                onClick={() => navigate(slide.link)}
-                className="group px-10 py-4 bg-white text-black text-lg font-bold rounded-full hover:bg-pink-500 hover:text-white transition-all flex items-center gap-3 shadow-xl"
-              >
-                Explore Service
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-              </button>
-            </div>
+              <div className="flex flex-wrap gap-5 mb-12">
+                <button 
+                  onClick={() => navigate("/contact")} 
+                  className="px-10 py-4 bg-[#FF4D6D] text-white rounded-full font-black uppercase tracking-widest text-[10px] shadow-2xl shadow-rose-200 hover:scale-105 transition active:scale-95"
+                >
+                  Get Started Now
+                </button>
+                <button 
+                  onClick={() => navigate("/about")} 
+                  className="px-10 py-4 border-2 border-gray-700 text-gray-800 rounded-full font-black uppercase tracking-widest text-[10px] hover:bg-gray-50 transition"
+                >
+                  Learn More
+                </button>
+              </div>
+            </motion.div>
           </div>
-        ))}
-
-        {/* DOTS */}
-        <div className="absolute bottom-10 w-full flex justify-center gap-3 z-30">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentSlide(i)}
-              className={`h-2 rounded-full transition-all ${
-                i === currentSlide ? "w-10 bg-pink-500" : "w-3 bg-white/40"
-              }`}
-            />
-          ))}
         </div>
+      </div>
 
-        {/* ARROWS */}
-        <button
-          onClick={prevSlide}
-          className="absolute left-5 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/20 rounded-full text-white hover:bg-white hover:text-black"
-        >
-          <ChevronLeft />
-        </button>
-
-        <button
-          onClick={nextSlide}
-          className="absolute right-5 top-1/2 -translate-y-1/2 z-40 p-3 bg-white/20 rounded-full text-white hover:bg-white hover:text-black"
-        >
-          <ChevronRight />
-        </button>
-
-      </section>
-
-      {/* 💎 METRICS */}
-      <section className="py-20 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-10 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {["500+ Happy Souls", "100% Privacy", "24/7 Support", "98% Success"].map((item, i) => (
-            <div key={i} className="text-center">
-              <h3 className="text-3xl font-bold text-pink-500">{item.split(" ")[0]}</h3>
-              <p className="text-gray-400 text-sm">{item.split(" ").slice(1).join(" ")}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 🏛️ WHY US */}
-      <section className="py-24 px-10 bg-white">
-        <div className="max-w-7xl mx-auto text-center mb-16">
-          <h2 className="text-5xl font-black mb-4">Why Choose Us</h2>
-          <p className="text-gray-500">We engineer results, not just advice.</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
+      {/* 📊 SECTION 2: STATS BAR */}
+      <div className="bg-gray-50 py-16 px-8 md:px-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {[
-            { t: "Deep Investigation", d: "We find the truth.", i: <Search /> },
-            { t: "Expert Coaches", d: "Best professionals.", i: <Shield /> },
-            { t: "100% Privacy", d: "Your data is safe.", i: <Flame /> }
-          ].map((card, i) => (
-            <div key={i} className="p-10 border rounded-3xl shadow hover:shadow-xl transition">
-              <div className="mb-4 text-pink-500">{card.i}</div>
-              <h3 className="text-xl font-bold">{card.t}</h3>
-              <p className="text-gray-500">{card.d}</p>
+            { label: "Happy Souls", val: "10k+", color: "text-[#FF4D6D]" },
+            { label: "Success Rate", val: "95%", color: "text-[#333]" },
+            { label: "Expert Support", val: "24/7", color: "text-[#333]" },
+            { label: "100% Privacy", val: "Secure", color: "text-[#333]" },
+          ].map((stat, i) => (
+            <div key={i} className="text-center">
+              <h3 className={`text-3xl font-black ${stat.color}`}>{stat.val}</h3>
+              <p className="text-[10px] uppercase tracking-[3px] font-bold text-gray-400 mt-2">{stat.label}</p>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* 🛠️ SECTION 3: SERVICES EXPLORER (Clickable Cards) */}
+      <section className="py-24 px-8 md:px-16 lg:px-24 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div className="max-w-xl text-left">
+              <h2 className="text-[10px] uppercase tracking-[5px] font-black text-[#FF4D6D] mb-4">What We Do</h2>
+              <h3 className="text-4xl md:text-5xl font-black text-[#333] leading-tight">
+                Our Specialized <span className="text-[#FF4D6D]">Services</span> for your Heart.
+              </h3>
+            </div>
+            <p className="text-gray-400 font-medium max-w-xs text-sm text-left">
+              हम सिर्फ सलाह नहीं देते, हम आपके इमोशन्स को समझते हैं और सही रास्ता दिखाते हैं।
+            </p>
+          </div>
+
+          {/* SERVICES GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                whileHover={{ y: -10 }}
+                // ✅ पूरे कार्ड को क्लिकेबल बनाया और नेविगेट किया
+                onClick={() => navigate(`/${createSlug(service.title)}`)}
+                className="group p-10 bg-white border border-gray-100 rounded-[40px] shadow-sm hover:shadow-2xl hover:shadow-rose-100 transition-all duration-500 cursor-pointer"
+              >
+                <div className="text-4xl mb-6 bg-rose-50 w-16 h-16 flex items-center justify-center rounded-2xl group-hover:bg-[#FF4D6D] group-hover:text-white transition-colors duration-500">
+                  {service.icon}
+                </div>
+                <h4 className="text-xl font-black text-[#333] mb-4 group-hover:text-[#FF4D6D] transition-colors">
+                  {service.title}
+                </h4>
+                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                  {service.desc}
+                </p>
+                <button className="text-[10px] font-black uppercase tracking-widest text-gray-400 group-hover:text-[#FF4D6D] flex items-center gap-2 transition-colors">
+                  Read More <span>→</span>
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      {/* 🖤 CTA */}
-      <section className="py-20 bg-black text-white text-center">
-        <h2 className="text-4xl font-bold mb-6">Ready to Transform?</h2>
-        <button
-          onClick={() => navigate("/book-now")}
-          className="px-10 py-4 bg-pink-500 rounded-full text-white font-bold hover:bg-white hover:text-black transition"
-        >
-          Book Now
-        </button>
-      </section>
-
-      {/* CUSTOM CSS */}
-      <style>{`
-        .bg-radial-gradient {
-          background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.5) 100%);
-        }
-      `}</style>
+      {/* 🔗 FOOTER DECO */}
+      <footer className="py-10 border-t border-gray-50 flex justify-center">
+        <div className="flex items-center gap-4 text-[11px] font-black text-black-800">
+          <span className="tracking-widest uppercase text-left">SoulMitra • 2026</span>
+          <div className="flex items-center gap-2">
+            <div className="w-16 h-[1px] bg-gray-100"></div>
+            <div className="w-2 h-2 border-2 border-[#111] rounded-full"></div>
+            <div className="w-16 h-[1px] bg-gray-100"></div>
+          </div>
+        </div>
+      </footer>
 
     </div>
   );
