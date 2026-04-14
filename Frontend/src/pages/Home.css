@@ -1,5 +1,5 @@
 /* 📱 MOBILE (≤479px) */
-@media (min-width: 425px) and (max-width: 768px) {
+@media (min-width: 400px) and (max-width: 768px) {
 
   .relative.min-h-screen {
     display: flex !important;
