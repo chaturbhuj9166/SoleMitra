@@ -1,66 +1,54 @@
-/* 📱 ADVANCED MOBILE LAYOUT (≤425px) */
-@media (max-width: 425px) {
+/* 📱 MOBILE (≤479px) */
+@media (min-width: 425px) and (max-width: 768px) {
 
-  /* MAIN HERO */
   .relative.min-h-screen {
     display: flex !important;
     flex-direction: column !important;
+    overflow: hidden !important;
+    padding-bottom: 40px;
   }
 
-  /* IMAGE */
   .hero-img {
-    position: relative !important;
-    width: 100% !important;
-    
+    position: relative;
+    width: 100%;
   }
-  .hero-img::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; /* 👈 fade area */
-
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0) 0%,
-    white 100%
-  );
-
-  pointer-events: none;
-}
 
   .hero-img img {
-    width: 100% !important;
+    width: 100%;
   }
 
-  /* TEXT WRAPPER */
+  /* IMAGE FADE */
+  .hero-img::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, white);
+  }
+
   .h1contenct {
-    padding: 20px !important;
+    padding: 20px;
   }
 
-  /* 🔥 HEADING KO IMAGE KE SAAMNE LANA */
   .h1contenct h1 {
-    font-size: 26px !important;
-    line-height: 1.2 !important;
-    top: -210px !important; /* 👈 MAGIC */
+    font-size: 26px;
+    line-height: 1.2;
     position: relative;
+    top: -50vw;   /* 🔥 responsive (no break) */
     z-index: 30;
   }
 
-  /* PARAGRAPH */
   .hero-pera {
-    font-size: 14px !important;
-    
-  }
-    .hero-pera {
-    margin-top: -100px !important;  /* 👈 gap kam karega */
+    margin-top: -20vw;
+    font-size: 14px;
+    text-align: center;
   }
 
-  /* BUTTONS */
   .hero-btns {
-    display: flex !important;
-    flex-direction: column !important;
+    display: flex;
+    flex-direction: column;
     gap: 12px;
     margin-top: 20px;
   }
@@ -68,86 +56,94 @@
   .hero-btns button {
     width: 100%;
   }
- .relative.min-h-screen {
-    overflow: hidden !important;
-     padding-bottom: 40px !important; /* 👈 MAGIC FIX */
+
+  .bg-gray-50 {
+    margin-top: -30px;
+    position: relative;
+    z-index: 20;
   }
-    .bg-gray-50 {
-    margin-top: -80px !important;  /* 👈 upar kheench */
+}
+
+
+
+/* 📱 TABLET LARGE (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .relative.min-h-screen {
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* IMAGE */
+  .hero-img {
+    position: absolute;   /* 👈 KEY FIX */
+    right: 0;
+    width: 60%;
+    z-index: 10;
+  }
+
+  .hero-img img {
+    width: 100%;
+  }
+
+  /* 🔥 TEXT OVER IMAGE */
+  .h1contenct {
+    position: relative;
+    z-index: 30;
+    width: 100%;
+    top: -30vw;
+  }
+
+  .h1contenct h1 {
+    font-size: 42px;
+    line-height: 1.2;
+      top: -150vw;
+
+  }
+
+  .hero-pera {
+    margin-top: 25px;
+    font-size: 18px;
+    max-width: 500px;
+ color: rgb(0, 0, 0);
+
+
+  }
+
+
+  /* BUTTON NICHE */
+  .hero-btns {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+  }
+   .bg-gray-50 {
+    top: -110px;
     position: relative;
     z-index: 20;
   }
 
 }
 
-@media (max-width: 1024px) and (min-width: 426px) {
+/* 📱 TABLET LARGE (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
 
-  /* MAIN LAYOUT COLUMN */
   .relative.min-h-screen {
     display: flex !important;
     flex-direction: column !important;
   }
 
-  /* 🔥 IMAGE */
   .hero-img {
-    position: relative !important;
-    width: 100% !important;
-    margin-top: -45px !important; /* 👈 5px aur upar */
+    position: relative;
+    width: 100%;
+    margin-top: -40px;
   }
 
   .hero-img img {
-    width: 100% !important;
+    width: 100%;
   }
 
-  /* 🔥 H1 IMAGE KE SAATH */
-  .h1contenct h1 {
-    font-size: 40px !important;
-    line-height: 1.2;
-    position: relative;
-    top: -380px;  /* 👈 image ke paas */
-    z-index: 30;
-  }
-
-  /* 🔥 PARAGRAPH NICHE */
-.hero-pera {
-  margin-top: -130px !important;
-  font-size: 17px;
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-
-  text-align: center;
-  max-width: 600px;   /* 👈 clean readable width */
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
-  /* 🔥 BUTTONS INLINE */
- .hero-btns {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 12px;
-  margin-top: 20px;
-
-  justify-content: center;   /* 👈 center */
-  width: 100%;
-}
-
-/* buttons ko thoda balanced width */
-.hero-btns button {
-  padding: 10px 18px !important;
-  font-size: 11px;
-
-  min-width: 160px;  /* 👈 same size buttons */
-}
-
-  /* 🔥 IMAGE BOTTOM BLUR EFFECT */
-  .hero-img {
-    position: relative;
-  }
-
+  /* IMAGE FADE */
   .hero-img::after {
     content: "";
     position: absolute;
@@ -155,19 +151,42 @@
     left: 0;
     width: 100%;
     height: 100px;
-
-    background: linear-gradient(
-      to bottom,
-      rgba(255,255,255,0) 0%,
-      white 100%
-    );
-
-    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, white);
   }
-   .bg-gray-50 {
-    margin-top: -30px !important;  /* 👈 upar kheench */
+
+  /* 🔥 H1 + PARA IMAGE KE SAATH */
+  .h1contenct h1 {
+    font-size: 42px;
+    position: relative;
+    top: -25vw;
+    z-index: 30;
+  }
+
+  .hero-pera {
+    margin-top: -18vw;
+    font-size: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* 🔥 BUTTON NICHE */
+  .hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-btns button {
+    padding: 10px 20px;
+    min-width: 160px;
+  }
+
+  .bg-gray-50 {
+    margin-top: -30px;
     position: relative;
     z-index: 20;
   }
-
 }
