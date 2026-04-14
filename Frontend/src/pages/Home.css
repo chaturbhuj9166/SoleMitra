@@ -73,7 +73,7 @@
      padding-bottom: 40px !important; /* 👈 MAGIC FIX */
   }
     .bg-gray-50 {
-    margin-top: -30px !important;  /* 👈 upar kheench */
+    margin-top: -80px !important;  /* 👈 upar kheench */
     position: relative;
     z-index: 20;
   }
