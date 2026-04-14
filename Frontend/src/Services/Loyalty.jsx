@@ -2,15 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Sparkles, ShieldCheck, Search, ArrowRight, Check, Star, Fingerprint } from "lucide-react";
 
-// 🖼️ इमेज इम्पोर्ट
-// 💡 टिप: फाइल का नाम rename करके 'hero-loyalty.png' कर लेना
+// 🖼️ Image Import
 import loyaltyImg from "../images/ChatGPT Image Apr 9, 2026, 12_59_03 PM.png";
 
 const Loyalty = () => {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    // यहाँ हम 'loyalty-test' वैल्यू भेज रहे हैं ताकि Contact में सिलेक्ट हो जाए
     navigate("/contact", { state: { selectedService: "loyalty-test" } });
   };
 
@@ -39,7 +37,7 @@ const Loyalty = () => {
             </h1>
             
             <p className="text-gray-500 text-xl md:text-2xl leading-relaxed max-w-lg font-medium">
-              शक को यक़ीन में बदलें। Our professional, 100% confidential loyalty testing gives you the <span className="text-[#333] font-bold underline decoration-pink-300 underline-offset-4">blueprint</span> for complete trust or a clean break.
+              Turn doubt into absolute certainty. Our professional, 100% confidential loyalty testing gives you the <span className="text-[#333] font-bold underline decoration-pink-300 underline-offset-4">blueprint</span> for complete trust or a graceful new beginning.
             </p>
 
             <button 
@@ -48,24 +46,23 @@ const Loyalty = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D6D] to-[#A855F7] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <span className="relative flex items-center gap-3 uppercase tracking-tighter">
-                Start the Test <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                Initiate Audit <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </span>
             </button>
           </div>
 
-          {/* 🖼️ HERO IMAGE - With VIP Trust Frame */}
+          {/* 🖼️ HERO IMAGE */}
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-tr from-[#FF4D6D]/10 to-[#A855F7]/10 blur-2xl rounded-[4rem]"></div>
             <div className="relative bg-white/40 backdrop-blur-sm p-4 rounded-[4rem] shadow-2xl border border-white/60 transform rotate-2 group-hover:rotate-0 transition-all duration-700">
               <div className="aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-inner bg-pink-50/50">
                 <img 
-                  src={loyaltyImg} // 👈 यहाँ आपकी इमेज का वेरिएबल है
+                  src={loyaltyImg} 
                   alt="Professional Loyalty Test" 
                   className="w-full h-full object-cover transform transition duration-1000 group-hover:scale-110"
                 />
               </div>
               
-              {/* Floating Badge (Animated Fingerprint for Trust) */}
               <div className="absolute -bottom-10 -right-6 bg-white p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-pink-50 animate-bounce-slow">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-[#FF4D6D]/10 rounded-2xl flex items-center justify-center">
@@ -81,7 +78,7 @@ const Loyalty = () => {
           </div>
         </div>
 
-        {/* 💰 PRICING SECTION - ₹11,999 Audit Plan */}
+        {/* 💰 PRICING SECTION */}
         <div className="mb-40 relative">
           <div className="text-center mb-20 space-y-4">
             <h2 className="text-5xl md:text-6xl font-black text-[#2D2E5F] tracking-tighter">
@@ -94,22 +91,22 @@ const Loyalty = () => {
             <div className="absolute -inset-4 bg-gradient-to-r from-[#FF4D6D] to-[#A855F7] rounded-[4rem] blur-2xl opacity-10 group-hover:opacity-30"></div>
             
             <div className="relative bg-white/80 backdrop-blur-2xl rounded-[3.5rem] p-12 md:p-16 border border-white shadow-2xl text-center">
-              <h3 className="text-3xl font-black text-[#2D2E5F] mb-4">The VIP Transformation</h3>
-              <p className="text-gray-400 font-bold mb-10 tracking-[0.2em] uppercase text-xs italic">A Holistic Concierge Experience</p>
+              <h3 className="text-3xl font-black text-[#2D2E5F] mb-4">The Premium Transformation</h3>
+              <p className="text-gray-400 font-bold mb-10 tracking-[0.2em] uppercase text-[10px] italic">A Data-Driven Relationship Concierge</p>
               
               <div className="mb-12 relative inline-block">
-                <div className="absolute -top-4 -right-8 bg-[#FF4D6D] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">Value</div>
+                <div className="absolute -top-4 -right-8 bg-[#FF4D6D] text-white text-[10px] font-black px-3 py-1 rounded-full uppercase">VIP Access</div>
                 <span className="text-7xl font-black text-[#2D2E5F] tracking-tighter">₹11,999</span>
-                <span className="text-gray-400 font-bold text-xl block mt-2 tracking-widest uppercase text-xs">Per Full-Scope Audit</span>
+                <span className="text-gray-400 font-bold block mt-2 tracking-widest uppercase text-[10px]">Per Elite Scope Audit</span>
               </div>
 
               <div className="grid grid-cols-1 gap-5 mb-14 text-left px-4">
                 {[
-                  "Complete Social Media Analysis",
-                  "Cross-Platform Activity Audit",
-                  "Deep-Dive Emotional Clarity Session",
-                  "Full Confidentiality Protocols",
-                  "Detailed Professional Report (PDF)"
+                  "Digital Footprint & Social Analysis",
+                  "Cross-Platform Interaction Audit",
+                  "Integrity Assessment Framework",
+                  "Advanced Discretion Protocols",
+                  "Comprehensive Strategic Report (PDF)"
                 ].map((feature, i) => (
                   <div key={i} className="flex items-center gap-4 group/item">
                     <div className="w-6 h-6 bg-pink-100 rounded-full flex items-center justify-center group-hover/item:bg-[#FF4D6D] transition-colors">
@@ -122,32 +119,32 @@ const Loyalty = () => {
 
               <button 
                 onClick={handleBookNow}
-                className="w-full py-6 bg-gradient-to-r from-[#2D2E5F] to-[#1A1B3B] text-white font-black rounded-[2rem] hover:shadow-2xl transition-all uppercase tracking-widest text-sm"
+                className="w-full py-6 bg-gradient-to-r from-[#2D2E5F] to-[#1A1B3B] text-white font-black rounded-[2rem] hover:shadow-2xl transition-all uppercase tracking-widest text-[11px] shadow-lg"
               >
-                Secure Your Spot Now
+                Claim Your Peace of Mind
               </button>
             </div>
           </div>
         </div>
 
-        {/* 🔥 FEATURES GRID - Minimum Minimalism */}
+        {/* 🔥 FEATURES GRID */}
         <div className="grid md:grid-cols-3 gap-10">
           {[
             { 
-              title: "Psychological Edge", 
-              desc: "Decode partner behavior using modern cognitive science.",
+              title: "Strategic Insight", 
+              desc: "Gain a psychological advantage with behavior decoding using modern relationship science.",
               icon: <Star className="w-7 h-7" />,
               gradient: "from-amber-400 to-orange-500"
             },
             { 
-              title: "Total Discretion", 
-              desc: "Your identity and journey remain strictly confidential.",
+              title: "Total Anonymity", 
+              desc: "We prioritize your privacy. Your identity is shielded through encrypted protocols.",
               icon: <Search className="w-7 h-7" />,
               gradient: "from-purple-500 to-indigo-600"
             },
             { 
-              title: "Instant Clarity", 
-              desc: "Immediate breakthrough techniques for urgent conflicts.",
+              title: "Rapid Breakthrough", 
+              desc: "Get fast-track results for urgent dilemmas and settle long-standing doubts today.",
               icon: <Sparkles className="w-7 h-7" />,
               gradient: "from-[#FF4D6D] to-[#E63958]"
             }

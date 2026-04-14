@@ -1,16 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Sparkles, HeartCrack, LifeBuoy, ArrowRight, Check, Star, Wind } from "lucide-react";
+import { Sparkles, HeartCrack, LifeBuoy, ArrowRight, Check, Star } from "lucide-react";
 
-// 🖼️ इमेज इम्पोर्ट
-// 💡 टिप: फाइल का नाम rename करके 'hero-breakup.png' कर लेना
+// 🖼️ Image Import
 import breakupImg from "../images/ChatGPT Image Apr 9, 2026, 12_54_32 PM.png";
 
 const Breakup = () => {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    // यहाँ हम 'breakup-services' वैल्यू भेज रहे हैं ताकि Contact में सिलेक्ट हो जाए
+    // Navigating to contact with the breakup service state
     navigate("/contact", { state: { selectedService: "breakup" } });
   };
 
@@ -28,7 +27,7 @@ const Breakup = () => {
           <div className="space-y-10 relative z-10">
             <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/60 backdrop-blur-xl border border-white/80 rounded-full shadow-sm">
               <Sparkles className="w-4 h-4 text-[#FF4D6D] fill-[#FF4D6D]" />
-              <span className="text-[11px] font-black text-[#FF4D6D] uppercase tracking-[0.2em]">healing together</span>
+              <span className="text-[11px] font-black text-[#FF4D6D] uppercase tracking-[0.2em]">Healing Together</span>
             </div>
             
             <h1 className="text-6xl md:text-[5.5rem] font-black text-[#2D2E5F] leading-[1.05] tracking-tight">
@@ -39,7 +38,7 @@ const Breakup = () => {
             </h1>
             
             <p className="text-gray-500 text-xl md:text-2xl leading-relaxed max-w-lg font-medium">
-              हर अंत एक नई शुरुआत है। <span className="text-[#333] font-bold underline decoration-pink-300 underline-offset-4">blueprint</span> to turn your pain into power and find peace again.
+              Every end is a new beginning. We provide the <span className="text-[#333] font-bold underline decoration-pink-300 underline-offset-4">blueprint</span> to turn your pain into power and rediscover your peace.
             </p>
 
             <button 
@@ -53,19 +52,18 @@ const Breakup = () => {
             </button>
           </div>
 
-          {/* 🖼️ HERO IMAGE - With Broken Heart Frame */}
+          {/* 🖼️ HERO IMAGE */}
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-tr from-[#FF4D6D]/10 to-[#A855F7]/10 blur-2xl rounded-[4rem]"></div>
             <div className="relative bg-white/40 backdrop-blur-sm p-4 rounded-[4rem] shadow-2xl border border-white/60 transform rotate-2 group-hover:rotate-0 transition-all duration-700">
               <div className="aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-inner bg-pink-50/50">
                 <img 
-                  src={breakupImg} // 👈 यहाँ आपकी इमेज का वेरिएबल है
+                  src={breakupImg} 
                   alt="Heartbreak Healing" 
                   className="w-full h-full object-cover transform transition duration-1000 group-hover:scale-110"
                 />
               </div>
               
-              {/* Floating Badge (Animated Cracked Heart) */}
               <div className="absolute -bottom-10 -right-6 bg-white p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-pink-50 animate-bounce-slow">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-[#FF4D6D]/10 rounded-2xl flex items-center justify-center">
@@ -81,7 +79,7 @@ const Breakup = () => {
           </div>
         </div>
 
-        {/* 💰 PRICING SECTION - ₹14,999 VIP Healing Plan */}
+        {/* 💰 PRICING SECTION */}
         <div className="mb-40 relative">
           <div className="text-center mb-20 space-y-4">
             <h2 className="text-5xl md:text-6xl font-black text-[#2D2E5F] tracking-tighter">
@@ -130,24 +128,24 @@ const Breakup = () => {
           </div>
         </div>
 
-        {/* 🔥 FEATURES GRID - Minimum Minimalism */}
+        {/* 🔥 FEATURES GRID */}
         <div className="grid md:grid-cols-3 gap-10">
           {[
             { 
               title: "Psychological Edge", 
-              desc: "Decode partner behavior using modern cognitive science.",
+              desc: "Decode emotional patterns using modern behavioral science.",
               icon: <Star className="w-7 h-7" />,
               gradient: "from-amber-400 to-orange-500"
             },
             { 
-              title: "Total Discretion", 
-              desc: "Your identity and journey remain strictly confidential.",
+              title: "Absolute Privacy", 
+              desc: "Your identity and healing journey remain strictly confidential.",
               icon: <LifeBuoy className="w-7 h-7" />,
               gradient: "from-purple-500 to-indigo-600"
             },
             { 
               title: "Instant Clarity", 
-              desc: "Immediate breakthrough techniques for urgent conflicts.",
+              desc: "Immediate breakthrough techniques for post-breakup conflict.",
               icon: <Sparkles className="w-7 h-7" />,
               gradient: "from-[#FF4D6D] to-[#E63958]"
             }

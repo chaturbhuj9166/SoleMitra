@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const DoNothing = () => {
   const navigate = useNavigate();
-  const [timer, setTimer] = useState(120); // 2 मिनट का टाइमर
+  const [timer, setTimer] = useState(120);
   const [isActive, setIsActive] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
 

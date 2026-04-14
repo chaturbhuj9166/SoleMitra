@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import "./Logo.css";
 
 const Logo = () => {
   const [hover, setHover] = useState(false);

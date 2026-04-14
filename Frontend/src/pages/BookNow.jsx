@@ -17,7 +17,7 @@ const BookNow = () => {
     email: "Not provided"
   };
 
-  // 🗺️ App.js के स्क्रीनशॉट के मुताबिक सटीक Paths
+ 
   const serviceRoutes = {
     "relationship-coach": "/relationship-coach",
     "attraction-art": "/master-the-art-of-attraction",
@@ -62,8 +62,8 @@ const BookNow = () => {
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="w-full max-w-xl bg-[#0a0a0a]/80 border border-white/10 rounded-[3rem] backdrop-blur-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
-        >
+          className="w-full max-w-xl bg-[#0a0a0a]/80 border border-white/10 rounded-[3rem] backdrop-blur-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] mt-20"
+        > 
           {/* HEADER */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 mb-4">
@@ -155,6 +155,10 @@ const BookNow = () => {
       {/* AMBIENT GLOWS */}
       <div className="fixed -top-24 -right-24 w-96 h-96 bg-pink-500/10 blur-[150px] rounded-full pointer-events-none"></div>
       <div className="fixed -bottom-24 -left-24 w-96 h-96 bg-purple-500/10 blur-[150px] rounded-full pointer-events-none"></div>
+
+
+
+
 
     </div>
   );

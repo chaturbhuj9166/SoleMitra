@@ -1,0 +1,8 @@
+/* 📱 TAGLINE FIX ONLY MOBILE */
+@media (max-width: 425px) {
+
+  .group p {
+    letter-spacing: 0.1em !important;  /* 👈 gap kam */
+  }
+
+}

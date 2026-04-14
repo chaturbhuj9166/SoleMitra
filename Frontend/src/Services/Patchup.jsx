@@ -2,8 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Sparkles, Heart, Coffee, ArrowRight, Check, ShieldCheck, Sun } from "lucide-react";
 
-// 🖼️ इमेज इम्पोर्ट
-// 💡 टिप: फाइल का नाम 'hero-patchup.png' रख लेना
+// 🖼️ Image Import
 import patchupImg from "../images/ChatGPT Image Apr 9, 2026, 01_05_39 PM.png";
 
 const Patchup = () => {
@@ -38,7 +37,7 @@ const Patchup = () => {
             </h1>
             
             <p className="text-gray-500 text-xl md:text-2xl leading-relaxed max-w-lg font-medium">
-              रिश्तों की कड़वाहट मिटाएं। Bridges aren't burnt forever. Let's create the <span className="text-[#333] font-bold underline decoration-orange-200 underline-offset-4">blueprint</span> to win them back with dignity.
+              Dissolve the bitterness in your bond. Bridges aren't burnt forever. Let's create the <span className="text-[#333] font-bold underline decoration-orange-200 underline-offset-4">blueprint</span> to win them back with grace and dignity.
             </p>
 
             <button 
@@ -47,12 +46,12 @@ const Patchup = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#FF4D6D] to-[#FFB347] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <span className="relative flex items-center gap-3 uppercase tracking-tighter">
-                Fix Your Relationship <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                Heal Your Relationship <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </span>
             </button>
           </div>
 
-          {/* 🖼️ HERO IMAGE - Hugging Couple */}
+          {/* 🖼️ HERO IMAGE */}
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-tr from-orange-200/20 to-pink-200/20 blur-2xl rounded-[4rem]"></div>
             <div className="relative bg-white/60 backdrop-blur-md p-4 rounded-[4rem] shadow-2xl border border-white/80 transform -rotate-1 group-hover:rotate-0 transition-all duration-700">
@@ -64,7 +63,6 @@ const Patchup = () => {
                 />
               </div>
               
-              {/* Floating Badge (Peace/Reunion) */}
               <div className="absolute -bottom-8 -left-6 bg-white p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-orange-50 animate-bounce-slow">
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center">
@@ -87,20 +85,20 @@ const Patchup = () => {
             
             <div className="relative bg-white/90 backdrop-blur-2xl rounded-[3.5rem] p-12 md:p-16 border border-white shadow-2xl text-center">
               <h3 className="text-3xl font-black text-[#2D2E5F] mb-4 uppercase tracking-tight">The Reconciliation Plan</h3>
-              <p className="text-gray-400 font-bold mb-10 tracking-[0.2em] uppercase text-[10px] italic">Bring Back the Spark</p>
+              <p className="text-gray-400 font-bold mb-10 tracking-[0.2em] uppercase text-[10px] italic">Ignite the Spark Again</p>
               
               <div className="mb-12">
                 <span className="text-7xl font-black text-[#2D2E5F] tracking-tighter">₹12,999</span>
-                <span className="text-gray-400 font-bold block mt-2 tracking-widest uppercase text-xs">Per Strategy Session</span>
+                <span className="text-gray-400 font-bold block mt-2 tracking-widest uppercase text-[10px]">Per Exclusive Strategy Session</span>
               </div>
 
               <div className="space-y-5 mb-14 text-left">
                 {[
                   "Conflict De-escalation Scripts",
                   "Ego-Clash Resolution Techniques",
-                  "Re-attraction Psychological Plan",
+                  "Strategic Re-attraction Plan",
                   "Apology & Forgiveness Framework",
-                  "Post-Patchup Maintenance Guide"
+                  "Long-term Bond Maintenance Guide"
                 ].map((feature, i) => (
                   <div key={i} className="flex items-center gap-4">
                     <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center">
@@ -113,9 +111,9 @@ const Patchup = () => {
 
               <button 
                 onClick={handleBookNow}
-                className="w-full py-6 bg-gradient-to-r from-[#2D2E5F] to-[#1A1B3B] text-white font-black rounded-3xl hover:shadow-xl transition-all uppercase tracking-widest text-xs"
+                className="w-full py-6 bg-gradient-to-r from-[#2D2E5F] to-[#1A1B3B] text-white font-black rounded-3xl hover:shadow-xl transition-all uppercase tracking-widest text-[11px] shadow-lg"
               >
-                Book Your Session
+                Start Your Healing Journey
               </button>
             </div>
           </div>
@@ -125,20 +123,20 @@ const Patchup = () => {
         <div className="grid md:grid-cols-3 gap-10">
           {[
             { 
-              title: "Mediated Talk", 
-              desc: "Learn how to talk through high-tension arguments calmly.",
+              title: "Mediated Dialogue", 
+              desc: "Master the art of high-tension conversations with calm and tactical communication.",
               icon: <Coffee className="w-7 h-7" />,
               gradient: "from-orange-400 to-amber-500"
             },
             { 
-              title: "Trust Building", 
-              desc: "Proven steps to regain trust after a major fallout.",
+              title: "Trust Recovery", 
+              desc: "Verified psychological steps to rebuild a foundation after a major fallout.",
               icon: <ShieldCheck className="w-7 h-7" />,
               gradient: "from-indigo-400 to-purple-600"
             },
             { 
               title: "Emotional Reset", 
-              desc: "Techniques to clear old baggage and start fresh.",
+              desc: "Advanced techniques to clear historic baggage and initiate a fresh start.",
               icon: <Sparkles className="w-7 h-7" />,
               gradient: "from-[#FF4D6D] to-rose-600"
             }
